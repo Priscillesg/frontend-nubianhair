@@ -4,10 +4,6 @@ import BusinessesList from './components/BusinessesList';
 import { useState , useEffect} from 'react';
 
 
-
-
-
-
 function App() {
   const [businesses, setBusinesses] = useState([])
 
@@ -20,17 +16,15 @@ function App() {
       }
     })
     .then(resp => resp.json())
-    .then(resp => setBusinesses(resp["businesses"]))
+    .then(resp => setBusinesses(resp))
     .catch(error => console.log(error))
 
   }, []);
 
   return (
     <div className="App">
-        {businesses.map(business => {
-          return <h2>{business["name"]}</h2>
-        })}
-      <BusinessesList/>
+
+      <BusinessesList businessdata= {businesses}/>
     </div>
   );
 }

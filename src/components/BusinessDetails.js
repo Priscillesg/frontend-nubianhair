@@ -1,10 +1,13 @@
 import React from 'react'
 
 
-const BusinessDetails = () => {
+const BusinessDetails = (props) => {
 
     return (
-        <div>Business Details</div>
+        <div>
+            <div>Name: {props.name}</div>
+            <div>Reviews: {props.review}</div>
+        </div>
     )
 }
 

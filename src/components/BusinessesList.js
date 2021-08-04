@@ -1,11 +1,22 @@
 import React from 'react'
 import BusinessDetails from './BusinessDetails';
 
-const BusinessesList = () => {
+const BusinessesList = (props) => {
+
+   const render_list = props.businessdata.map(business => {
+        return (
+            <div key={business.id}>
+                <BusinessDetails
+                    name = {business.name}
+                    review = {business.review_count}
+                    ></BusinessDetails>
+            </div>)
+        
+      })
 
     return (
         <div>
-            <BusinessDetails/>
+            {render_list}
         </div>
     )
 }
