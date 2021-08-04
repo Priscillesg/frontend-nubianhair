@@ -2,8 +2,22 @@
 
 
 
+/* 
+.homepage {
+  height: 50vh;
 
+} */
 
+/* .homepage .img {
+  background: linear-gradient( rgba(42, 42, 42, 0.5), rgba(42, 42, 42, 0.5) ), url("./images/park-street-KYUiTYOaE9M-unsplash.jpg");
+  background-size: cover;
+  position: relative;
+
+}
+.homepage .img ::before {
+  position: absolute;
+  background-color: rgba(rgba(24, 22, 22, 0.712), rgba(0, 0, 0, 0.5), blue, alpha);
+} */
 
 
 
@@ -11,9 +25,12 @@
 
 
 /* .App {
-  text-align: center;
-}
+  background: linear-gradient( rgba(42, 42, 42, 0.5), rgba(42, 42, 42, 0.5) ), url("./images/park-street-KYUiTYOaE9M-unsplash.jpg");
+  background-size: cover;
+  position: relative;
 
+} */
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -47,4 +64,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+} */ 

@@ -1,31 +1,19 @@
 import './App.css';
-// import axios from 'axios';
+import { Route, Switch } from "react-router-dom";
+import HomePage from './components/HomePage';
 import BusinessesList from './components/BusinessesList';
-import { useState , useEffect} from 'react';
+import BusinessDetails from './components/BusinessDetails';
+// import axios from 'axios';
 
 
-function App() {
-  const [businesses, setBusinesses] = useState([])
-
-  useEffect( () => {
-    fetch('http://127.0.0.1:8000/api_list/', {
-      'method':'GET',
-      headers: {
-        'Content-Type':'application/json',
-        'Authorization':`Token 164db5e00610c5a682f19e61ec0960f656de73b2` 
-      }
-    })
-    .then(resp => resp.json())
-    .then(resp => setBusinesses(resp))
-    .catch(error => console.log(error))
-
-  }, []);
-
+const App = () => {
   return (
-    <div className="App">
-
-      <BusinessesList businessdata= {businesses}/>
-    </div>
+ 
+        <Switch>
+          <Route path='api_list/<str:business_id>/'component={BusinessDetails}/>
+          <Route path='api_list/' component={BusinessesList}/>
+          <Route path='/' component={HomePage}/>
+        </Switch>
   );
 }
 

@@ -2,7 +2,12 @@
 .selector-for-some-widget {
   box-sizing: content-box;
 }
-
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: 300;
+  font-size: 20px;
+}
 
 body {
   margin: 0;

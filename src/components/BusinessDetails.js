@@ -3,6 +3,9 @@ import React from 'react'
 
 const BusinessDetails = (props) => {
 
+
+    
+        
     return (
         <div>
             <div>Name: {props.name}</div>

@@ -1,23 +1,27 @@
 import React from 'react'
-import BusinessDetails from './BusinessDetails';
+;
 
 const BusinessesList = (props) => {
 
-   const render_list = props.businessdata.map(business => {
-        return (
-            <div >
-                <BusinessDetails
-                    key={business.id}
-                    name = {business.name}
-                    review = {business.review_count}
-                    ></BusinessDetails>
-            </div>)
-        
-      })
+    const onBusinessClick = () => {
+        props.onBusinessSelect(props.id)
+    }
 
     return (
         <div>
-            {render_list}
+           {props.businessdata && props.businessdata.map(business => {
+        return (
+            <div key={business.id}>
+               <h3>{business.name}</h3>
+               <h3>{business.review_count}</h3>
+               <hr/>
+            </div>
+            )
+        })}
+        <div>
+            <button type="button" class="btn btn-primary"onClick={onBusinessClick} >View details</button>
+        </div>
+        
         </div>
     )
 }
