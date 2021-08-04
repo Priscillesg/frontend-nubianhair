@@ -5,8 +5,9 @@ const BusinessesList = (props) => {
 
    const render_list = props.businessdata.map(business => {
         return (
-            <div key={business.id}>
+            <div >
                 <BusinessDetails
+                    key={business.id}
                     name = {business.name}
                     review = {business.review_count}
                     ></BusinessDetails>
