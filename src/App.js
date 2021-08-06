@@ -10,8 +10,8 @@ const App = () => {
   return (
  
         <Switch>
-          <Route path='api_list/<str:business_id>/'component={BusinessDetails}/>
-          <Route path='api_list/' component={BusinessesList}/>
+          <Route path='/:business_id' component={BusinessDetails}/>
+          <Route path='/api_list' component={BusinessesList}/>
           <Route path='/' component={HomePage}/>
         </Switch>
   );

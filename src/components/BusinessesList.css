@@ -1,2 +1,24 @@
+.search-results {
+    margin-top: 1rem;
+}
 
+.search-results {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
+.business-image {
+    width: 210px;
+    height: 210px;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+
+  .business-info {
+    min-width: 400px;
+  }
+  
+.other p {
+    font-size: 0.85rem;
+  }

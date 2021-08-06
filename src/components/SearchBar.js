@@ -2,9 +2,9 @@ import React, {useState, useEffect}from 'react'
 
 
 const SearchBar = (props) => {
-    const [term, setTerm] = useState('')
-    const [location, setLocation] = useState('')
-    const [token] = useCookies(['mytoken'])
+    const [term, setTerm] = useState(props.term || '')
+    const [location, setLocation] = useState(props.term || '')
+    // const [token] = useCookies(['mytoken'])
 
     const submit = (event) => {
         event.preventDefault();
@@ -15,10 +15,10 @@ const SearchBar = (props) => {
         };
 
     return (
-        <div>
+        <form onSubmit={submit}>
             <div class="row g-3">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name" value={term} onChange ={(event)=>setTerm(event.target.value)}/>
+                    <input type="text" class="form-control" placeholder="Search Businesses" aria-label="First name" value={term} onChange ={(event)=>setTerm(event.target.value)}/>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" placeholder="Where" aria-label="Last name" value={location} onChange ={(event)=>setLocation(event.target.value)}/>
@@ -26,9 +26,10 @@ const SearchBar = (props) => {
                 <div>
                     <button type="button" class="btn btn-primary"onClick={submit} >Search</button>
                 </div>
-                
+        
             </div>
-        </div>
+            
+        </form>
     )
 }
 
