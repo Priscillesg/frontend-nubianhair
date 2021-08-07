@@ -49,10 +49,9 @@ const HomePage = () => {
             <Header/>
 
             <SearchBar search={search}/>
-            {/* <BusinessesList businessdata= {businesses}/> */}
+       
             <BusinessesList businessdata= {businesses}/> 
-            
-            <BusinessDetails/>
+        
         </div>
         
 

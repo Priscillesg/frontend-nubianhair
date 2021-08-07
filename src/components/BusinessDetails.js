@@ -3,46 +3,38 @@ import { useParams } from "react-router-dom";
 
 
 
-const BusinessDetails = (props) => {
+const BusinessDetails = () => {
 
     const [businessDetail, setBusinessDetail] = useState({})
     const { business_id } = useParams();
 
-    const getDetails = (path, id) =>{
+    useEffect (()=>{
+        const abortController = new AbortController();
+        const signal = abortController.signal
 
-        return fetch(`http://127.0.0.1:8000/${path}/${id}`, {
+        fetch(`http://127.0.0.1:8000/api_list/${business_id}`, {
             'method':'GET',
             headers: {
               'Content-Type':'application/json',
               'Authorization':`Token 164db5e00610c5a682f19e61ec0960f656de73b2` 
             }
-        } )
-    }
-
-    useEffect (()=>{
-        const fetchDetails = async () => {
-            try {
-                const rawDetails = await getDetails('api_list', business_id);
-                console.log(rawDetails);
-                const resp = await rawDetails.json();
-                setBusinessDetail(resp);
-                
-            } catch(e) {
-                console.error(e);
-                }
-                };
-                fetchDetails();
+        }, { signal: signal })
+        .then(resp => resp.json())
+        .then(resp => {setBusinessDetail(resp);
+        })
+        .catch(error => console.log(error));
+        return function cleanup() {
+            abortController.abort();
+          };
+        
     },[business_id])
-
     
+
     return (
         <div>
-            {/* <h2>Business Details</h2> */}
-            <div>
-            
-            </div>
+        { Object.keys(businessDetail).length !==0?(
             <div class="container">
-        <       div class="row">
+                <div class="row">
                     <div class="col">
                     <img src={businessDetail.image_url} alt='businessDetail-img' placeholder='https://via.placeholder.com/150' className='businessDetail-image'/>
                     </div>
@@ -55,8 +47,9 @@ const BusinessDetails = (props) => {
                     </div>
                     <div class="col">Favoris</div>
                 </div>
-        </div>
-       
+            </div>
+        ): <div></div>}
+
         </div>
     )
 }
