@@ -1,68 +1,43 @@
 import React, {useState, useEffect} from 'react'
-// import queryString from 'query-string'
 import APIService from './APIService';
 import {useCookies} from 'react-cookie'
 import {useHistory} from 'react-router-dom';
+import Register from './Register';
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [token, setToken] = useCookies(["mytoken"])
-    // const [token, setToken] = useState({})
+    const [isLogin, setLogin] = useState(true)
 
     let history = useHistory()
 
-    useEffect(() => {
-       
-        if(token['mytoken']) {
-            history.push('/')
-        }
-    }, [history, token])
+
 
     const loginBtn = () => {
         APIService.LoginUser({username, password})
-        .then(resp => setToken('mytoken',resp.token))
+        .then(resp => {
+            setToken('mytoken',resp.token)
+            // setLogin(true)
+            history.push('/')
+        })
+        
         .catch(error => console.log(error))
 
     }
-  
 
-    // const loginUser = (body) => {
+    const RegisterBtn = () => {
+        APIService.RegisterUser({username, password})
+        .then(() =>  loginBtn())
+        .catch(error =>console.log(error))
 
-    //     return fetch('http://127.0.0.1:8000/auth/', {
-    //       'method':'POST',
-    //       headers: {
-    //           'Content-Type':'application/json',
-              
-    //         }, 
-    //         body:JSON.stringify(body)
-  
-    //     })
-  
-    //   }
-   
-    //     const loginBtn = () => {
-    //         const fetchLoginData = async() => {
-    //             try {
-    //                 const loginData = await loginUser({username, password})
-    //                 const resp = await loginData.json();
-        
-    //                 setToken("mytoken" ,resp.token)
-                    
-    //             }catch(e){
-    //                 console.error(e)
-    //             }
-    //         }
-    //         fetchLoginData()
-        
-    //     }
-   
-
-
+    }
 
     return (
         <div>
-            <h2>Please login</h2>
+           
+            {isLogin ? <h1>Please Login </h1> : <h1>Please Register </h1>}
+            
             <div className="mb-3 row">
                 <label htmlFor="username" className="col-sm-2 col-form-label" placeholder="Please enter your username">Username</label>
                 <div className="col-sm-10">
@@ -74,9 +49,18 @@ const Login = () => {
                 <div className="col-sm-10">
                     <input type="password" className="form-control" id="inputPassword"value = {password} onChange = {e => setPassword(e.target.value)}/>
                 </div>
+
+                {isLogin ?  <button onClick = {loginBtn}>Login</button>
+            :  <button onClick = {RegisterBtn} >Register</button>
+            }
+
             </div>
-            <button className = "btn btn-primary" onClick = {loginBtn}>Login</button>
-        </div>
+                {isLogin ? <h5>If You Don't Have Account, Please <button onClick = {() => setLogin(false)} >Register</button>Here</h5>
+                
+                :  <h5>If You Have Account, Please <button onClick = {() => setLogin(true)} >Login</button>Here</h5>
+                }
+
+            </div>
 
     )
 }

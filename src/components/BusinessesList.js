@@ -1,19 +1,11 @@
-import React, { useState, Link} from 'react';
+import React from 'react';
 import './BusinessesList.css'
 import BusinessRating from './BusinessRating';
-import { useParams } from "react-router-dom";
 
 const BusinessesList = (props) => {
-    // const { business_id } = useParams();
 
-    // const [businessId, setBusinessId] =  useState("") 
-    // const onBusinessDetails = (event) => {
-    //     event.preventDefault();
-    //     setBusinessId(`event.target.${business_id}`)
-    //     if(typeof props.searchDetail === 'function') {
-    //         props.searchDetail(businessId);
-    //     }
-    // }
+
+
 
     return (
         <div>
@@ -45,19 +37,6 @@ const BusinessesList = (props) => {
                     </div>
                 )
             })}
-            {/* <div className="container">
-                <div className="row">
-                    <div className="col">
-                    Column
-                    </div>
-                    <div className="col">
-                    Column
-                    </div>
-                    <div className="col">
-                    Column
-                    </div>
-                </div>
-            </div> */}
                
         </div>
     )

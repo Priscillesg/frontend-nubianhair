@@ -5,6 +5,7 @@ import BusinessesList from './components/BusinessesList';
 import BusinessDetails from './components/BusinessDetails';
 import Login from './components/Login';
 import {CookiesProvider} from 'react-cookie';
+import FavouritesList from './components/FavouritesList';
 // import axios from 'axios';
 
 
@@ -15,6 +16,7 @@ const App = () => {
           <Route  path='/api_list' exact component={BusinessesList}/>
           <Route  path='/' exact component={HomePage}/>
           <Route  path='/login' exact component={Login}/>
+          <Route  path='/favourites' exact component={FavouritesList}/>
           <Route  path='/:business_id' exact component={BusinessDetails}/>
     </Router>
     </CookiesProvider>
